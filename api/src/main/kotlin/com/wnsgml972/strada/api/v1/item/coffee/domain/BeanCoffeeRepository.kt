@@ -6,8 +6,7 @@ import org.springframework.stereotype.Repository
 import java.util.*
 
 @Repository
-interface CoffeeRepository : JpaRepository<Coffee, String>{
+interface BeanCoffeeRepository : JpaRepository<BeanCoffee, BeanCoffeeId>{
 
-    @Query(value = "select DISTINCT c from Coffee c  inner join fetch c.beanCoffees d inner join fetch d.bean")
-    fun findbyName(name: String): Optional<Coffee>
+    fun findByBeanId(id: String): Optional<List<BeanCoffee>>
 }
